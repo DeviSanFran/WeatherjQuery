@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Query Open Weather API</h2>
+
+<input type="type" name="name" value="" />
+
+<button class="btn btn-primary">Query!</button>
+
+
+
+@section MyScripts { 
+<script>
+    $(function () {
+        $("button").on("click", function () {
+            var input = $("input").val();
+            var key = "add key here before running!!!"; // can't put key on github for public use ;)
+            $.ajax({ url: "https://api.openweathermap.org/data/2.5/weather?q=" + input + "&APPID=" + key + "&units=imperial" })
+                .done(function (data) {
+                    console.log(data);
+                    alert(data.main.temp);
+                })
+        })
+    });
+   
+</script>
+    }
